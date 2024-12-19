@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossa LoveStory ❤️</title>
+    <link rel="icon" href="icon.png" type="image/png">
+     <style>
+        body {
+            font-family: 'Dancing Script', cursive;
+            text-align: center;
+            background: linear-gradient(to bottom, #ffcccc, #ffe6e6);
+            color: #5c2b29;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-size: 2.5rem; /* Tamanho maior */
+            margin-top: 15px;
+            color: #d1453b;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3); /* Sombra no texto */
+            font-weight: bold;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin: 10px;
+            color: #7a2a2a;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+        }
+        h3 {
+            font-size: x-large;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            font-weight: bolder;
+            padding: 15px;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+            translate: 50%, 50%;
+        }
+        h4 {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .carrossel {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin: 20px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .carrossel img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: transform 1s ease;
+        }
+        .carrossel .legenda {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 4px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .seta {
+            position:absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 1rem;
+            border-radius: 15px;
+            padding: 5px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .seta-esquerda {
+            left: 2px;
+        }
+        .seta-direita {
+            right: 2px;
+        }
+        .contador {
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 500px;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+        }
+        .contador p {
+            font-size: 1.5rem;
+            margin: 10px 0;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+        }
+        .contador span {
+            font-weight: bold;
+            color: #d1453b;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+        }
+        .botao-audio {
+            background-color: #ff9999;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .botao-audio:hover {
+            background-color: #ff6666;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 1.25rem;
+            color: #7a2a2a;
+        }
+     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Áudio de fundo -->
+    <audio id="background-audio" loop>
+        Seu navegador não suporta áudio.
+    </audio>
+
+    <h1>Desde que conheci você...</h1>
+    <h2>Minha vida nunca mais foi a mesma!</h2>
+
+    <!-- Carrossel de Imagens -->
+    <div class="carrossel">
+        <div class="legenda">Wander & Biah❤️</div>
+        <img src="casal1.jpg" alt="Foto 1" class="foto">
+        <img src="casal2.jpeg" alt="Foto 2" class="foto" style="display:none;">
+        <img src="casal3.jpeg" alt="Foto 3" class="foto" style="display:none;">
+        <span class="seta seta-esquerda" onclick="mudarImagem(-1)">&#10094;</span>
+        <span class="seta seta-direita" onclick="mudarImagem(1)">&#10095;</span>
+    </div>
+
+    <div>
+        <h2>"Bianca, saiba que te amo a cada segundo que se passa, e nenhum desses segundos eu quero perder..."</h2>
+        <h4>____________________________</h4>
+        <h3>Conta comigo..?😊</h3>
+    </div>
+
+    <div class="contador">
+        <p><span id="anos">0</span> anos, <span id="meses">0</span> meses,</p>
+        <p><span id="dias">0</span> dias, <span id="horas">0</span> horas,</p>
+        <p><span id="minutos">0</span> minutos e <span id="segundos">0</span> segundos.</p>
+    </div>
+
+    <h3>Será que você conhece essas canções?? 😌</h3>
+
+    <!-- Botão para reproduzir o áudio -->
+    <button class="botao-audio" onclick="escolherMusicasAleatorias()">🎵 Tocar nossas Músicas</button>
+
+    <footer>
+        <p>Eu te amo mais a cada segundo ❤️</p>
+    </footer>
+
+    <script>
+        // Função para reproduzir o áudio ao clicar no botão
+        const musicas = [
+        "musica1.mp3",
+        "musica2.mp3",
+        "musica3.mp3"
+    ];
+
+    // Função para selecionar 3 músicas aleatórias
+    function escolherMusicasAleatorias() {
+        // Embaralhar a lista de músicas
+        const musicasEmbaralhadas = [...musicas].sort(() => Math.random() - 0.3);
+
+        // Selecionar as 3 primeiras músicas da lista embaralhada
+        const musicasSelecionadas = musicasEmbaralhadas.slice(0, 3);
+
+        // Atualizar o áudio de fundo com a primeira música selecionada
+        const audio = document.getElementById("background-audio");
+        audio.src = musicasSelecionadas[0];
+        audio.play();
+    }
+
+
+        // Defina a data fixa aqui (formato: "AAAA-MM-DDTHH:mm:ss")
+        const dataFixa = "2020-02-01T16:00:00"; // Exemplo: data em que vocês se conheceram
+
+        function calcularDiferenca(dataInicial) {
+            const agora = new Date();
+            const inicio = new Date(dataInicial);
+
+            let anos = agora.getFullYear() - inicio.getFullYear();
+            let meses = agora.getMonth() - inicio.getMonth();
+            let dias = agora.getDate() - inicio.getDate();
+            let horas = agora.getHours() - inicio.getHours();
+            let minutos = agora.getMinutes() - inicio.getMinutes();
+            let segundos = agora.getSeconds() - inicio.getSeconds();
+
+            // Ajustar valores negativos
+            if (segundos < 0) {
+                segundos += 60;
+                minutos -= 1;
+            }
+            if (minutos < 0) {
+                minutos += 60;
+                horas -= 1;
+            }
+            if (horas < 0) {
+                horas += 24;
+                dias -= 1;
+            }
+            if (dias < 0) {
+                const ultimoDiaMesAnterior = new Date(agora.getFullYear(), agora.getMonth(), 0).getDate();
+                dias += ultimoDiaMesAnterior;
+                meses -= 1;
+            }
+            if (meses < 0) {
+                meses += 12;
+                anos -= 1;
+            }
+
+            // Atualizar os valores na página
+            document.getElementById("anos").textContent = anos;
+            document.getElementById("meses").textContent = meses;
+            document.getElementById("dias").textContent = dias;
+            document.getElementById("horas").textContent = horas;
+            document.getElementById("minutos").textContent = minutos;
+            document.getElementById("segundos").textContent = segundos;
+        }
+
+        // Iniciar a contagem em tempo real
+        setInterval(() => calcularDiferenca(dataFixa), 1000);
+
+        // Lógica do carrossel de fotos
+        let indiceImagem = 0;
+        const imagens = document.querySelectorAll('.carrossel img');
+        const totalImagens = imagens.length;
+
+        function mudarImagem(direcao) {
+            imagens[indiceImagem].style.display = 'none';
+            indiceImagem = (indiceImagem + direcao + totalImagens) % totalImagens;
+            imagens[indiceImagem].style.display = 'block';
+        }
+
+        // Função para alternar automaticamente as imagens
+        setInterval(() => mudarImagem(1), 5000); // Muda a imagem a cada 5 segundos
+    </script>
+</body>
+</html>
